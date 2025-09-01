@@ -825,7 +825,7 @@ const ProblemsManagement = () => {
 
   const fetchProblems = async () => {
     try {
-      const res = await axios.get('hhttps://devarena-leetcode-2.onrender.com/api/admin/problems', axiosConfig);
+      const res = await axios.get('https://devarena-leetcode-2.onrender.com/api/admin/problems', axiosConfig);
       setProblems(res.data);
     } catch (err) {
       console.error(err);
