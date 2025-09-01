@@ -104,8 +104,28 @@ export const addPremium = async (req, res) => {
       premium: newPremium,
     });
   } catch (error) {
-    console.error('Add Premium Error:', error);
+    console.error('=== ADD PREMIUM ERROR ===');
+    console.error('Error name:', error.name);
+    console.error('Error message:', error.message);
     console.error('Error stack:', error.stack);
+    
+    // Check if it's a file upload error
+    if (error.code === 'LIMIT_FILE_SIZE') {
+      return res.status(400).json({ message: 'File too large. Maximum size is 50MB.' });
+    }
+    
+    if (error.code === 'LIMIT_FILE_COUNT') {
+      return res.status(400).json({ message: 'Too many files. Only one file allowed.' });
+    }
+    
+    // Check if it's a Cloudinary error
+    if (error.http_code) {
+      console.error('Cloudinary error:', error.http_code, error.message);
+      return res.status(500).json({ 
+        message: 'File upload to Cloudinary failed', 
+        error: error.message 
+      });
+    }
     
     // More specific error messages
     if (error.name === 'ValidationError') {

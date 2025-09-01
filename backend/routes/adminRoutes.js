@@ -1,6 +1,6 @@
 import express from 'express';
 import adminAuth from '../middleware/adminAuth.js';
-import upload from '../middleware/multer.js';
+import upload, { handleMulterError } from '../middleware/multer.js';
 import {
   getAllProblems,
   addProblem,
@@ -286,10 +286,10 @@ router.post('/fix-urls', adminAuth, async (req, res) => {
 });
 
 // POST: Admin uploads file directly to Cloudinary
-router.post('/premium', adminAuth, upload.single('file'), addPremium);
+router.post('/premium', adminAuth, upload.single('file'), handleMulterError, addPremium);
 
 // PUT: Admin updates premium content
-router.put('/premium/:id', adminAuth, upload.single('file'), updatePremium);
+router.put('/premium/:id', adminAuth, upload.single('file'), handleMulterError, updatePremium);
 
 // DELETE: Admin deletes premium content (Cloudinary + DB)
 router.delete('/premium/:id', adminAuth, deletePremium);

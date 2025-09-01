@@ -52,18 +52,18 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Environment check endpoint (for debugging)
+// Environment check endpoint for debugging
 app.get('/api/env-check', (req, res) => {
   res.json({
-    message: 'Environment variables check',
-    mongo: !!process.env.MONGO_URI,
-    cloudinary: {
-      cloudName: !!process.env.CLOUD_NAME,
-      apiKey: !!process.env.CLOUD_API_KEY,
-      apiSecret: !!process.env.CLOUD_API_SECRET
-    },
-    jwt: !!process.env.JWT_SECRET,
-    nodeEnv: process.env.NODE_ENV || 'development'
+    nodeEnv: process.env.NODE_ENV,
+    mongoUri: process.env.MONGO_URI ? 'Set' : 'Missing',
+    cloudName: process.env.CLOUD_NAME ? 'Set' : 'Missing',
+    cloudApiKey: process.env.CLOUD_API_KEY ? 'Set' : 'Missing',
+    cloudApiSecret: process.env.CLOUD_API_SECRET ? 'Set' : 'Missing',
+    jwtSecret: process.env.JWT_SECRET ? 'Set' : 'Missing',
+    googleClientId: process.env.GOOGLE_CLIENT_ID ? 'Set' : 'Missing',
+    razorpayKeyId: process.env.RAZORPAY_KEY_ID ? 'Set' : 'Missing',
+    razorpayKeySecret: process.env.RAZORPAY_KEY_SECRET ? 'Set' : 'Missing'
   });
 });
 
