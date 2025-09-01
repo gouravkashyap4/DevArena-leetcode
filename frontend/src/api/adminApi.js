@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = "http://localhost:5000/api/admin";
+const API_URL = "https://devarena-leetcode-2.onrender.com/api/admin";
 
 // Create an axios instance
 const API = axios.create({

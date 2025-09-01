@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const API_URL = "http://localhost:5000/api/admin/users";
+const API_URL = "https://devarena-leetcode-2.onrender.com/api/admin/users";
 
 const UsersManagement = () => {
   const [users, setUsers] = useState([]);

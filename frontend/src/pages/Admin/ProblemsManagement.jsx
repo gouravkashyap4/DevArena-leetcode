@@ -825,7 +825,7 @@ const ProblemsManagement = () => {
 
   const fetchProblems = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/admin/problems', axiosConfig);
+      const res = await axios.get('hhttps://devarena-leetcode-2.onrender.com/api/admin/problems', axiosConfig);
       setProblems(res.data);
     } catch (err) {
       console.error(err);
@@ -884,10 +884,10 @@ const ProblemsManagement = () => {
       }
 
       if (editId) {
-        await axios.put(`http://localhost:5000/api/admin/problems/${editId}`, payload, axiosConfig);
+        await axios.put(`https://devarena-leetcode-2.onrender.com/api/admin/problems/${editId}`, payload, axiosConfig);
         toast.success('Problem updated successfully');
       } else {
-        await axios.post('http://localhost:5000/api/admin/problems', payload, axiosConfig);
+        await axios.post('https://devarena-leetcode-2.onrender.com/api/admin/problems', payload, axiosConfig);
         toast.success('Problem added successfully');
       }
 
@@ -937,7 +937,7 @@ const ProblemsManagement = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this problem?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/admin/problems/${id}`, axiosConfig);
+      await axios.delete(`https://devarena-leetcode-2.onrender.com/api/admin/problems/${id}`, axiosConfig);
       toast.success('Problem deleted successfully');
       fetchProblems();
     } catch (err) {

@@ -10,7 +10,7 @@ const Problems = () => {
   useEffect(() => {
     const fetchProblems = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/problems", {
+        const res = await axios.get("https://devarena-leetcode-2.onrender.com/api/problems", {
           withCredentials: true,
         });
         setProblems(res.data);
