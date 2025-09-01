@@ -198,11 +198,14 @@ const PremiumPage = () => {
           
           try {
             // Update user's premium status in backend
+            const token = localStorage.getItem('token');
             const updateResponse = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users/upgrade-to-premium`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
+                ...(token ? { Authorization: `Bearer ${token}` } : {}),
               },
+              // Include cookies if the backend also sets them; harmless otherwise
               credentials: 'include',
               body: JSON.stringify({
                 plan: selectedPlan.name,
